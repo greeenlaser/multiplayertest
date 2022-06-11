@@ -36,7 +36,9 @@ namespace Photon.Pun.UtilityScripts
 
         [HideInInspector] public SpawnSequence Sequence = SpawnSequence.Connection;
 
+#pragma warning disable IDE0090 // Use 'new(...)'
         [HideInInspector] public List<Transform> SpawnPoints = new List<Transform>(1) { null };
+#pragma warning restore IDE0090 // Use 'new(...)'
 
         [Tooltip("Add a random variance to a spawn point position. GetRandomOffset() can be overridden with your own method for producing offsets.")]
         [HideInInspector] public bool UseRandomOffset = true;
@@ -48,7 +50,9 @@ namespace Photon.Pun.UtilityScripts
         [Tooltip("Disables the Y axis of RandomOffset. The Y value of the spawn point will be used.")]
         [HideInInspector] public bool ClampY = true;
 
+#pragma warning disable IDE0090 // Use 'new(...)'
         [HideInInspector] public List<GameObject> PrefabsToInstantiate = new List<GameObject>(1) { null }; // set in inspector
+#pragma warning restore IDE0090 // Use 'new(...)'
 
         [FormerlySerializedAs("autoSpawnObjects")]
         [HideInInspector] public bool AutoSpawnObjects = true;
@@ -56,7 +60,9 @@ namespace Photon.Pun.UtilityScripts
         #endregion
 
         // Record of spawned objects, used for Despawn All
+#pragma warning disable IDE0090 // Use 'new(...)'
         public Stack<GameObject> SpawnedObjects = new Stack<GameObject>();
+#pragma warning restore IDE0090 // Use 'new(...)'
         protected int spawnedAsActorId;
 
 
@@ -135,7 +141,9 @@ namespace Photon.Pun.UtilityScripts
 					return unvalidated;
 
 				var prefabStatus = PrefabUtility.GetPrefabInstanceStatus(unvalidated);
+#pragma warning disable CS0618 // Type or member is obsolete
 				var isValidPrefab = prefabStatus == PrefabInstanceStatus.Connected || prefabStatus == PrefabInstanceStatus.Disconnected;
+#pragma warning restore CS0618 // Type or member is obsolete
 
 				if (isValidPrefab)
 					validated = PrefabUtility.GetCorrespondingObjectFromSource(unvalidated) as GameObject;
@@ -188,7 +196,9 @@ namespace Photon.Pun.UtilityScripts
 #if UNITY_EDITOR
                     Debug.Log("Auto-Instantiating: " + o.name);
 #endif
+#pragma warning disable IDE0018 // Inline variable declaration
                     Vector3 spawnPos; Quaternion spawnRot;
+#pragma warning restore IDE0018 // Inline variable declaration
                     GetSpawnPoint(out spawnPos, out spawnRot);
 
 
@@ -393,7 +403,9 @@ namespace Photon.Pun.UtilityScripts
             {
                 if (GUI.Button(EditorGUILayout.GetControlRect(GUILayout.MaxWidth(20)), "+", (GUIStyle)"minibutton"))
                 {
+#pragma warning disable IDE0059 // Unnecessary assignment of a value
                     int newindex = list.arraySize;
+#pragma warning restore IDE0059 // Unnecessary assignment of a value
                     list.InsertArrayElementAtIndex(0);
                     list.GetArrayElementAtIndex(0).objectReferenceValue = null;
                 }
@@ -438,7 +450,9 @@ namespace Photon.Pun.UtilityScripts
         private void Add(SerializedProperty list, int i)
         {
             {
+#pragma warning disable IDE0059 // Unnecessary assignment of a value
                 int newindex = list.arraySize;
+#pragma warning restore IDE0059 // Unnecessary assignment of a value
                 list.InsertArrayElementAtIndex(i);
                 list.GetArrayElementAtIndex(i).objectReferenceValue = null;
             }
