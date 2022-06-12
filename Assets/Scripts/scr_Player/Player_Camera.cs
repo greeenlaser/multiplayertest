@@ -32,20 +32,18 @@ public class Player_Camera : MonoBehaviour
     private void Start()
     {
         view = GetComponent<PhotonView>();
+        view.RequestOwnership();
 
-        if (view.IsMine)
-        {
-            gameObject.GetComponent<Camera>().fieldOfView = fov;
-            sensX = mouseSpeed;
-            sensY = mouseSpeed;
-            txt_MouseSpeed.text = mouseSpeed.ToString();
-            txt_FOV.text = gameObject.GetComponent<Camera>().fieldOfView.ToString();
+        gameObject.GetComponent<Camera>().fieldOfView = fov;
+        sensX = mouseSpeed;
+        sensY = mouseSpeed;
+        txt_MouseSpeed.text = mouseSpeed.ToString();
+        txt_FOV.text = gameObject.GetComponent<Camera>().fieldOfView.ToString();
 
-            slider_MouseSpeed.onValueChanged.AddListener(delegate { SetMouseSpeed(); });
-            slider_FOV.onValueChanged.AddListener(delegate { SetFOV(); });
+        slider_MouseSpeed.onValueChanged.AddListener(delegate { SetMouseSpeed(); });
+        slider_FOV.onValueChanged.AddListener(delegate { SetFOV(); });
 
-            StartCoroutine(Wait());
-        }
+        StartCoroutine(Wait());
     }
 
     private void Update()

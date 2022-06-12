@@ -28,10 +28,10 @@ public class Player_Movement : MonoBehaviour
     public bool isGrounded;
     public float currentStamina;
     public Vector3 velocity;
-    private PhotonView view;
     [HideInInspector] public CharacterController controller;
     private Camera PlayerCamera;
     private GameObject checkSphere;
+    private PhotonView view;
 
     //private variables
     private bool startStaminaRechargeCooldown;
@@ -44,29 +44,27 @@ public class Player_Movement : MonoBehaviour
     private void Start()
     {
         view = GetComponent<PhotonView>();
+        view.RequestOwnership();
 
-        if (view.IsMine)
+        foreach (Transform child in transform)
         {
-            foreach (Transform child in transform)
+            if (child.name == "checkSphere")
             {
-                if (child.name == "checkSphere")
-                {
-                    checkSphere = transform.gameObject;
-                }
+                checkSphere = transform.gameObject;
             }
-            controller = GetComponent<CharacterController>();
-            PlayerCamera = transform.GetComponentInChildren<Camera>();
-
-            currentSpeed = walkSpeed;
-            currentStamina = maxStamina;
-            canMove = true;
-            canSprint = true;
-            canCrouch = true;
-            canJump = true;
-
-            originalHeight = controller.height;
-            PlayerCamera.transform.localPosition = cameraFullHeight;
         }
+        controller = GetComponent<CharacterController>();
+        PlayerCamera = transform.GetComponentInChildren<Camera>();
+
+        currentSpeed = walkSpeed;
+        currentStamina = maxStamina;
+        canMove = true;
+        canSprint = true;
+        canCrouch = true;
+        canJump = true;
+
+        originalHeight = controller.height;
+        PlayerCamera.transform.localPosition = cameraFullHeight;
     }
 
     private void Update()

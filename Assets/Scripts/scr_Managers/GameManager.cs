@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
     {
         txt_GameVersion.text = str_GameVersion;
 
-        Screen.SetResolution(1920, 1080, FullScreenMode.ExclusiveFullScreen);
+        Screen.SetResolution(1920, 1080, FullScreenMode.FullScreenWindow);
         QualitySettings.vSyncCount = 0;
     }
 
