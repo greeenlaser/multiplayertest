@@ -12,21 +12,17 @@ public class Manager_PauseMenu : MonoBehaviour
     [HideInInspector] public bool isPMOpen;
 
     //private variables
-    private PhotonView view;
     private Manager_UIReuse UIReuseScript;
 
     private void Start()
     {
         UIReuseScript = par_Managers.GetComponent<Manager_UIReuse>();
         UIReuseScript.LoadPMContent();
-
-        view = par_Managers.GetComponent<GameManager>().view;
     }
 
     private void Update()
     {
-        if (view.IsMine
-            && Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             isPMOpen = !isPMOpen;
 
@@ -60,8 +56,8 @@ public class Manager_PauseMenu : MonoBehaviour
     }
     public void ReturnToMainMenu()
     {
-        PhotonNetwork.Disconnect();
-        PhotonNetwork.LoadLevel("Scene_Main");
+        PhotonNetwork.LeaveRoom();
+        PhotonNetwork.LoadLevel("Scene_MainMenu");
     }
     public void QuitGame()
     {

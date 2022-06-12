@@ -14,7 +14,7 @@ public class CreateAndJoinLobbies : MonoBehaviourPunCallbacks
     //private variables
     private Manager_UIReuse UIReuseScript;
 
-    private void Awake()
+    private void Start()
     {
         UIReuseScript = par_Managers.GetComponent<Manager_UIReuse>();
     }

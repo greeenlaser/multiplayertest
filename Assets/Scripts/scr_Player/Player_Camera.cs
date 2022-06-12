@@ -41,6 +41,9 @@ public class Player_Camera : MonoBehaviour
             txt_MouseSpeed.text = mouseSpeed.ToString();
             txt_FOV.text = gameObject.GetComponent<Camera>().fieldOfView.ToString();
 
+            slider_MouseSpeed.onValueChanged.AddListener(delegate { SetMouseSpeed(); });
+            slider_FOV.onValueChanged.AddListener(delegate { SetFOV(); });
+
             StartCoroutine(Wait());
         }
     }
@@ -64,26 +67,20 @@ public class Player_Camera : MonoBehaviour
 
     public void SetMouseSpeed()
     {
-        if (view.IsMine)
-        {
-            mouseSpeed = slider_MouseSpeed.value;
+        mouseSpeed = slider_MouseSpeed.value;
 
-            sensX = slider_MouseSpeed.value;
-            sensY = slider_MouseSpeed.value;
+        sensX = slider_MouseSpeed.value;
+        sensY = slider_MouseSpeed.value;
 
-            txt_MouseSpeed.text = slider_MouseSpeed.value.ToString();
-        }
+        txt_MouseSpeed.text = slider_MouseSpeed.value.ToString();
     }
 
     public void SetFOV()
     {
-        if (view.IsMine)
-        {
-            fov = Mathf.FloorToInt(slider_FOV.value);
-            txt_FOV.text = slider_FOV.value.ToString();
+        fov = Mathf.FloorToInt(slider_FOV.value);
+        txt_FOV.text = slider_FOV.value.ToString();
 
-            gameObject.GetComponent<Camera>().fieldOfView = fov;
-        }
+        gameObject.GetComponent<Camera>().fieldOfView = fov;
     }
 
     private IEnumerator Wait()

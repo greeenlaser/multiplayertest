@@ -985,7 +985,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1505872060}
+  m_Father: {fileID: 1402657529}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1379860930
@@ -1003,6 +1003,7 @@ MonoBehaviour:
   str_GameVersion: test 0.1.1
   txt_GameVersion: {fileID: 469533462}
   txt_fpsValue: {fileID: 977184352}
+  view: {fileID: 0}
 --- !u!114 &1379860931
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1044,6 +1045,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1505872060}
+  - {fileID: 1379860929}
   - {fileID: 1823399923}
   - {fileID: 615885509}
   m_Father: {fileID: 0}
@@ -1078,7 +1080,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 963194228}
-  - {fileID: 1379860929}
   m_Father: {fileID: 1402657529}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
